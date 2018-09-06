@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="713f6ee5-20a1-467c-9e98-149842b96b72" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/account.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Networker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Networker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Trader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/crypto-trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1535903917060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/crypto_trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1536245500034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/crypto_trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1536247270336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,13 +34,13 @@
         <counts>
           <entry key="Python Console" value="84" />
           <entry key="dummy" value="1" />
-          <entry key="py" value="10346" />
+          <entry key="py" value="10551" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="10430" />
+          <entry key="Python" value="10635" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -60,11 +60,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Networker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="84" column="22" lean-forward="true" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+            <state relative-caret-position="375">
+              <caret line="58" column="13" lean-forward="true" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1536245252000" expanded="true" signature="4279:4280" ph="..." />
+                <marker date="1536247202000" expanded="true" signature="4313:4314" ph="..." />
               </folding>
             </state>
           </provider>
@@ -74,10 +74,10 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="417">
-              <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+              <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
               <folding>
-                <marker date="1536245477000" expanded="true" signature="147:149" ph="..." />
-                <marker date="1536245477000" expanded="true" signature="148:149" ph="..." />
+                <marker date="1536247270000" expanded="true" signature="147:149" ph="..." />
+                <marker date="1536247270000" expanded="true" signature="148:149" ph="..." />
               </folding>
             </state>
           </provider>
@@ -86,11 +86,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Trader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+            <state relative-caret-position="1170">
+              <caret line="78" column="54" lean-forward="true" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <marker date="1536246621000" expanded="true" signature="130:132" ph="..." />
+                <marker date="1536247532000" expanded="true" signature="130:132" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FinancialExpert.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="161" column="8" selection-start-line="161" selection-start-column="8" selection-end-line="161" selection-end-column="8" />
+            <state relative-caret-position="342">
+              <caret line="183" selection-start-line="183" selection-end-line="183" />
               <folding>
                 <marker date="1536246621000" expanded="true" signature="27:3186" ph="..." />
               </folding>
@@ -125,12 +125,12 @@
       <list>
         <option value="$PROJECT_DIR$/FinancialExper.py" />
         <option value="$PROJECT_DIR$/account.py" />
-        <option value="$PROJECT_DIR$/Networker.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/trading.py" />
         <option value="$PROJECT_DIR$/FinancialExpert.py" />
-        <option value="$PROJECT_DIR$/Trader.py" />
         <option value="$PROJECT_DIR$/helpers.py" />
+        <option value="$PROJECT_DIR$/Networker.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Trader.py" />
       </list>
     </option>
   </component>
@@ -278,12 +278,12 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26323318" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26323318" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -328,48 +328,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/helpers.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Networker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="375">
+          <caret line="58" column="13" lean-forward="true" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
           <folding>
-            <marker date="1536245477000" expanded="true" signature="147:149" ph="..." />
-            <marker date="1536245477000" expanded="true" signature="148:149" ph="..." />
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1536247202000" expanded="true" signature="4313:4314" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Networker.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="84" column="22" lean-forward="true" selection-start-line="84" selection-start-column="22" selection-end-line="84" selection-end-column="22" />
+        <state relative-caret-position="417">
+          <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1536245252000" expanded="true" signature="4279:4280" ph="..." />
+            <marker date="1536247270000" expanded="true" signature="147:149" ph="..." />
+            <marker date="1536247270000" expanded="true" signature="148:149" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FinancialExpert.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="161" column="8" selection-start-line="161" selection-start-column="8" selection-end-line="161" selection-end-column="8" />
+        <state relative-caret-position="342">
+          <caret line="183" selection-start-line="183" selection-end-line="183" />
           <folding>
             <marker date="1536246621000" expanded="true" signature="27:3186" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Trader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+        <state relative-caret-position="1170">
+          <caret line="78" column="54" lean-forward="true" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <marker date="1536246621000" expanded="true" signature="130:132" ph="..." />
+            <marker date="1536247532000" expanded="true" signature="130:132" ph="..." />
           </folding>
         </state>
       </provider>

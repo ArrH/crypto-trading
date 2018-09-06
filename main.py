@@ -35,7 +35,4 @@ if __name__ == "__main__":
 	# print(order_data)
 	#
 
-	trader = Trader()
-
-	print(trader.check_profitability(p2=1.3931, p1=1.3608, margin=0.4))
-	# print(compound_visualizer(s))
+	trader = Trader(strategy="SUNRAYS")

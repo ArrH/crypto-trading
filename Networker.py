@@ -26,7 +26,7 @@ class Networker():
 		# TODO error handling
 		request_url = self.build_request_url(endpoint=endpoint, query_params=query_params)
 		r = requests.get(url=request_url)
-		return r
+		return json.loads(r.text)
 
 
 	def make_private_request(self, method, endpoint, query_params=None):
@@ -58,7 +58,7 @@ class Networker():
 			r = requests.post(url=request_url, headers=headers)
 		else:
 			r = requests.get(url=request_url, headers=headers)
-		return r
+		return json.loads(r.text)
 
 	def get_time_in_ms(self):
 		"""

@@ -16,17 +16,18 @@ class Trader(FinancialExpert):
 								   public_key=PUBLIC_KEY)
 
 		self.strategy = strategy
-		if self.strategy is None:
-			self.strategy = "DEFAULT"
 
 		self.run()
 
 		return
 
 	def run(self):
-		if self.strategy == "SUNRISE":
+		if self.strategy == "SUNRAYS":
 			return self.start_sunray_trading()
-		elif self.strategy == "DEFAULT" or self.strategy == "SAFE":
+		elif self.strategy == "SAFE":
+			return
+		elif self.strategy is None:
+			print("No strategy chosen, so trader will only do what you ask it to.")
 			return
 
 	def wait(self, seconds):
@@ -41,6 +42,7 @@ class Trader(FinancialExpert):
 		while trading:
 			# Step 1: Check available balance in USDT:
 			account_info = self.networker.get_account_information()
+			print(account_info)
 			free_balance_usdt = float(self.check_free_balances_for_currency_list(account_info=account_info,
 																			currency_list=['USDT'])['USDT']) * 0.99
 			print("Amount of free USDT in your account: ", free_balance_usdt)
@@ -69,14 +71,14 @@ class Trader(FinancialExpert):
 			while running:
 
 				# Step 3: check if it makes sense to purchase
-				cs_data_averages = self.networker.get_cs_data_averages(cs_data=cs_data)
+				cs_data_averages = self.get_cs_data_averages(cs_data=cs_data)
 				decision = self.sunrays_based_descison(cs_data_averages=cs_data_averages,
 												  forward_sensitivity=forward_sensitivity,
 												  side=side,
 												  max_dev=max_dev,  # TODO update max_dev every 10 minutes?
 												  safety_factor=safety_factor)
 				if not decision:
-					wait(seconds=60)
+					self.wait(seconds=60)
 					mins_passed += 1
 					cs_data = self.networker.get_candlestick_data(symbol=chosen_currency_info['chosen_currency'], interval="1m",
 												   limit=str(data_amount))
@@ -110,8 +112,8 @@ class Trader(FinancialExpert):
 											 quantity=order_amount)
 
 					print(order_data)
-					wait(
-						seconds=30)  # Just to make sure order went through TODO remove naiveness from the absence of error handlings
+					self.wait(seconds=30)  # Just to make sure order went through
+					# TODO remove naiveness from the absence of error handlings
 
 					account_info = self.networker.get_account_information()
 					if side == "SELL":
