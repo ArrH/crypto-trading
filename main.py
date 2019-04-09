@@ -1,4 +1,5 @@
 from Trader import Trader
+from BinanceAPI import BinanceAPI
 
 
 # TODO stop loss to prevent profit plummeting
@@ -6,6 +7,9 @@ from Trader import Trader
 # TODO handle failures in transactions
 
 if __name__ == "__main__":
+	trader = Trader()
+
+
 	# start_sunray_trading()
 	# print(modify_amount_to_lot_size(amount_float=12.223,
 	# 						  lot_size=5))
@@ -35,4 +39,3 @@ if __name__ == "__main__":
 	# print(order_data)
 	#
 
-	trader = Trader(strategy="SUNRAYS")

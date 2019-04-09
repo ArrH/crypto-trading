@@ -50,6 +50,30 @@ class FinancialExpert():
 
 		return decision
 
+	def make_decision_sunray(self, symbol):
+		safety_factor = 0.4
+		forward_sensitivity = 2  # Isn't this a bit of a big? TEST
+		data_amount = 15 + forward_sensitivity
+		side = "BUY"
+		# Analyze all the currency with sunray and check if it makes sense to purchase it:
+		combined_symbol = symbol+"USDT"
+		cs_data = self.networker.get_candlestick_data(symbol=combined_symbol, interval="1m",
+													  limit=str(data_amount))
+
+		cs_data_averages = self.get_cs_data_averages(cs_data=cs_data)
+		hist_an = self.cs_history_analysis(cs_data=cs_data)
+
+		max_dev = hist_an["max"] - hist_an["min"]
+
+		decision = self.sunrays_based_descison(cs_data_averages=cs_data_averages,
+											   forward_sensitivity=forward_sensitivity,
+											   side=side,
+											   max_dev=max_dev,  # TODO update max_dev every 10 minutes?
+											   safety_factor=safety_factor)
+
+		return decision
+
+
 	def choose_currency_for_trading(self):
 		"""
 		This function performs some analysis on the candlestick_data of each symbol

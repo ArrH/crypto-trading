@@ -5,7 +5,7 @@ import requests
 from urllib.parse import urlencode
 import json
 
-class Networker():
+class BinanceAPI():
 	"""
 	This is a class that is used to communicate with the Binance API. It also contains a few methods that process the returned
 	data in a format used by the Trader.
@@ -13,7 +13,8 @@ class Networker():
 	def __init__(self, public_key, secret_key):
 		self.public_key = public_key
 		self.secret_key = secret_key
-		print("Networker Initialized")
+		print("Binance API Initialized")
+		print("----")
 		return
 
 	def make_public_request(self, endpoint, query_params=None):
@@ -25,8 +26,18 @@ class Networker():
 		"""
 		# TODO error handling
 		request_url = self.build_request_url(endpoint=endpoint, query_params=query_params)
-		r = requests.get(url=request_url)
-		return json.loads(r.text)
+		try:
+			r = requests.get(url=request_url)
+			print("Request Successfully made, status ", r.status_code)
+			print("type: public")
+			print("url: ", request_url)
+			print("----")
+			return json.loads(r.text)
+		except:
+			print("The following request has failed:")
+			print("type: public")
+			print("url: ", request_url)
+			return "{}"
 
 
 	def make_private_request(self, method, endpoint, query_params=None):
@@ -102,6 +113,17 @@ class Networker():
 			return_dict[currency["symbol"]] = lot_size
 		return return_dict
 
+	def build_precision_dict(self, market_data):
+		"""
+		builds a dict that has currency shorthand as keys and respective lot size as
+		:param market_data: markert data as retunred by the market data endpoint
+		:return:
+		"""
+		return_dict = {}
+		for currency in market_data['symbols']:
+			return_dict[currency["symbol"]] = currency['quotePrecision']
+		return return_dict
+
 	def get_ping(self):
 		return self.make_public_request(endpoint="/api/v1/ping")
 
@@ -144,12 +166,35 @@ class Networker():
 					  "quantity": quantity}
 		return self.make_private_request(method="POST", endpoint="/api/v3/order", query_params=order_info)
 
-	def place_stop_loss_order(self, symbol, side, o_type, quantity):
+	def place_stop_loss_order(self, symbol, side, stop_price, quantity):
 		order_info = {"symbol": symbol,
 					  "side": side,
-					  "type": o_type,
-					  "quantity": quantity}
+					  "type": "STOP_LOSS",
+					  "quantity": quantity,
+					  "stopPrice": stop_price
+					  }
 		return self.make_private_request(method="POST", endpoint="/api/v3/order", query_params=order_info)
+
+	def place_limit_order(self, symbol, side, stop_price, quantity):
+		order_info = {"symbol": symbol,
+					  "side": side,
+					  "type": "LIMIT",
+					  "quantity": quantity,
+					  "price": stop_price,
+					  "timeInForce": "GTC"
+					  }
+		return self.make_private_request(method="POST", endpoint="/api/v3/order", query_params=order_info)
+
+	def place_take_profit_order(self, symbol, side, stop_price, quantity):
+		order_info = {"symbol": symbol,
+					  "side": side,
+					  "type": "TAKE_PROFIT",
+					  "quantity": quantity,
+					  "stopPrice": stop_price
+					  }
+		return self.make_private_request(method="POST", endpoint="/api/v3/order", query_params=order_info)
+
+
 
 	def place_test_order(self, symbol, side, o_type, quantity):
 		order_info = {"symbol": symbol,
