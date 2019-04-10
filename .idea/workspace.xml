@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="713f6ee5-20a1-467c-9e98-149842b96b72" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinancialExpert.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinancialExpert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Networker.py" beforeDir="false" afterPath="$PROJECT_DIR$/BinanceAPI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Trader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Trader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +12,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/crypto-trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1535903917060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/crypto_trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1554784659992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/crypto_trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1554918873762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -36,15 +32,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="84" />
+          <entry key="Python Console" value="119" />
           <entry key="dummy" value="11" />
-          <entry key="py" value="18391" />
+          <entry key="py" value="18634" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="18475" />
+          <entry key="Python" value="18753" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -64,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BinanceAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-148">
+            <state relative-caret-position="80">
               <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -77,19 +73,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Trader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
+            <state relative-caret-position="274">
+              <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <marker date="1554750951511" expanded="true" signature="2997:2999" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="2997:3007" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="2997:6437" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="2997:6439" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="2997:6442" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="2997:6445" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="2997:6448" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="4690:4693" ph="..." />
-                <marker date="1554750951511" expanded="true" signature="4800:4802" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:3114" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:3122" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:6792" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:6794" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:6797" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:6800" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="3112:6803" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="4805:4808" ph="..." />
+                <marker date="1554918884282" expanded="true" signature="4915:4917" ph="..." />
               </folding>
             </state>
           </provider>
@@ -301,6 +297,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
@@ -314,7 +319,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32891566" />
@@ -362,7 +367,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BinanceAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
+        <state relative-caret-position="80">
           <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -373,19 +378,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Trader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
+        <state relative-caret-position="274">
+          <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <marker date="1554750951511" expanded="true" signature="2997:2999" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="2997:3007" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="2997:6437" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="2997:6439" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="2997:6442" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="2997:6445" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="2997:6448" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="4690:4693" ph="..." />
-            <marker date="1554750951511" expanded="true" signature="4800:4802" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:3114" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:3122" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:6792" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:6794" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:6797" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:6800" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="3112:6803" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="4805:4808" ph="..." />
+            <marker date="1554918884282" expanded="true" signature="4915:4917" ph="..." />
           </folding>
         </state>
       </provider>

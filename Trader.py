@@ -87,6 +87,9 @@ class Trader(FinancialExpert):
 		trading = True
 		symbols = self.symbols
 		symbols_in_bid = []
+
+		start_time = time.time()
+
 		while trading:
 
 			if balance_usdt > 10:
@@ -109,6 +112,10 @@ class Trader(FinancialExpert):
 						print("----")
 
 			balance_usdt = self.get_usdt_balance()
+			if time.time() - start_time > 3600:
+				start_time = 0
+				symbols = self.symbols
+
 			print("Balance USDT: ", balance_usdt)
 			print("----")
 			time.sleep(60)
@@ -210,6 +217,11 @@ class Trader(FinancialExpert):
 			print("----")
 
 		return order_placed
+
+	# def update_symbols_in_bid(self, symbols_in_bid):
+	# 	for symbol in symbols_in_bid:
+	# 		symbol_balance = float(self.check_free_balances_for_currency_list(account_info=account_info,
+	# 																		 currency_list=['USDT'])['USDT'])
 
 
 
