@@ -12,7 +12,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/crypto-trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1535903917060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/crypto_trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1554918873762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/crypto_trading$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1555524515451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,13 +34,13 @@
         <counts>
           <entry key="Python Console" value="119" />
           <entry key="dummy" value="11" />
-          <entry key="py" value="18634" />
+          <entry key="py" value="18736" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="18753" />
+          <entry key="Python" value="18855" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -73,19 +73,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Trader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
+            <state relative-caret-position="302">
+              <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <marker date="1554918884282" expanded="true" signature="3112:3114" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="3112:3122" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="3112:6792" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="3112:6794" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="3112:6797" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="3112:6800" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="3112:6803" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="4805:4808" ph="..." />
-                <marker date="1554918884282" expanded="true" signature="4915:4917" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:3124" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:3132" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:6917" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:6919" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:6922" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:6925" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="3122:6928" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="4815:4818" ph="..." />
+                <marker date="1555524583227" expanded="true" signature="4925:4927" ph="..." />
               </folding>
             </state>
           </provider>
@@ -378,19 +378,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Trader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
+        <state relative-caret-position="302">
+          <caret line="111" column="37" lean-forward="true" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <marker date="1554918884282" expanded="true" signature="3112:3114" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="3112:3122" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="3112:6792" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="3112:6794" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="3112:6797" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="3112:6800" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="3112:6803" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="4805:4808" ph="..." />
-            <marker date="1554918884282" expanded="true" signature="4915:4917" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:3124" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:3132" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:6917" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:6919" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:6922" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:6925" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="3122:6928" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="4815:4818" ph="..." />
+            <marker date="1555524583227" expanded="true" signature="4925:4927" ph="..." />
           </folding>
         </state>
       </provider>

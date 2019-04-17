@@ -113,7 +113,7 @@ class Trader(FinancialExpert):
 
 			balance_usdt = self.get_usdt_balance()
 			if time.time() - start_time > 3600:
-				start_time = 0
+				start_time = time.time()
 				symbols = self.symbols
 
 			print("Balance USDT: ", balance_usdt)
@@ -180,8 +180,11 @@ class Trader(FinancialExpert):
 												 side="BUY",
 												 o_type="MARKET",
 												 quantity=order_amount)
+		purchase_fills = {}
 		try:
-			purchase_fills = order_data['fills'][0]
+			for fill in order_data['fills']:
+				purchase_fills['price'] += float(fill['price'])
+				purchase_fills['qty'] += float(fill['qty'])
 			order_placed = True
 		except:
 			print(order_data)
