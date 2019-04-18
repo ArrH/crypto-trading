@@ -180,7 +180,8 @@ class Trader(FinancialExpert):
 												 side="BUY",
 												 o_type="MARKET",
 												 quantity=order_amount)
-		purchase_fills = {}
+		purchase_fills = {'price': 0.0,
+						  'qty': 0.0}
 		try:
 			for fill in order_data['fills']:
 				purchase_fills['price'] += float(fill['price'])
