@@ -1,3 +1,4 @@
+import os
 import time
 import hashlib
 import hmac
@@ -10,7 +11,7 @@ class BinanceAPI():
 	This is a class that is used to communicate with the Binance API. It also contains a few methods that process the returned
 	data in a format used by the Trader.
 	"""
-	def __init__(self, public_key, secret_key):
+	def __init__(self, secret_key, public_key):
 		self.public_key = public_key
 		self.secret_key = secret_key
 		print("Binance API Initialized")
@@ -54,7 +55,8 @@ class BinanceAPI():
 		# Build the basic required params dict and put it into url encode
 		if query_params is None:
 			query_params = {}
-		query_params["timestamp"] =self. get_time_in_ms()
+
+		query_params["timestamp"] =self.get_time_in_ms()
 		params = urlencode(query_params)
 
 		# Creat the signature
@@ -64,12 +66,25 @@ class BinanceAPI():
 
 		request_url = self.build_endpoint_url(endpoint=endpoint) + "?" + params + "&signature={hashedsig}".format(
 			hashedsig=hashedsig)
-		# print(request_url)
-		if method == "POST":
-			r = requests.post(url=request_url, headers=headers)
-		else:
-			r = requests.get(url=request_url, headers=headers)
-		return json.loads(r.text)
+
+		try:
+			if method == "POST":
+				r = requests.post(url=request_url, headers=headers)
+			elif method == "GET":
+				r = requests.get(url=request_url, headers=headers)
+			elif method == "DELETE":
+				r = requests.delete(url=request_url, headers=headers)
+
+			print("Request Successfully made, status ", r.status_code)
+			print("type: public")
+			print("url: ", request_url)
+			print("----")
+			return json.loads(r.text)
+		except:
+			print("The following request has failed:")
+			print("type: public")
+			print("url: ", request_url)
+			return "{}"
 
 	def get_time_in_ms(self):
 		"""
@@ -143,10 +158,28 @@ class BinanceAPI():
 					  	"limit": limit}
 		return self.make_public_request(endpoint="/api/v1/trades", query_params=query_params)
 
+	def get_order_data(self, symbol, order_id):
+		query_params = {"symbol": symbol,
+					  	"orderId": order_id,
+						"timestamp": self.get_time_in_ms()}
+
+		return self.make_private_request(method="GET", endpoint="/api/v3/order", query_params=query_params)
+
+	def get_open_orders(self, symbol):
+		query_params = {"symbol": symbol}
+
+		return self.make_private_request(method="GET", endpoint="/api/v3/openOrders", query_params=query_params)
+
+	def get_all_orders(self, symbol):
+		query_params = {"symbol": symbol}
+
+		return self.make_private_request(method="GET", endpoint="/api/v3/allOrders", query_params=query_params)
+
 	def get_old_trades(self, symbol, limit=None, fromId=None):
 		query_params = {"symbol": symbol,
 					  	"limit": limit,
 						"fromId": fromId}
+
 		return self.make_public_request(endpoint="/api/v1/historicalTrades", query_params=query_params)
 
 	def get_agr_trades(self, symbol, limit=None, fromId=None):
@@ -193,6 +226,13 @@ class BinanceAPI():
 					  "stopPrice": stop_price
 					  }
 		return self.make_private_request(method="POST", endpoint="/api/v3/order", query_params=order_info)
+
+
+	def cancel_order(self, symbol, order_id):
+		order_info = {"symbol": symbol,
+					  "orderId": order_id
+					  }
+		return self.make_private_request(method="DELETE", endpoint="/api/v3/order", query_params=order_info)
 
 
 

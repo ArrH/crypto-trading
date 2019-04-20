@@ -1,0 +1,30 @@
+[{'symbol': 'EOSUSDT', 'orderId': 125721695, 'clientOrderId': 'MDyWn5RHzYthl1mVpAA0s6', 'price': '5.51900000', 'origQty': '2.00000000', 'executedQty': '0.00000000', 'cummulativeQuoteQty': '0.00000000', 'status': 'NEW', 'timeInForce': 'GTC', 'type': 'LIMIT', 'side': 'SELL', 'stopPrice': '0.00000000', 'icebergQty': '0.00000000', 'time': 1555567991602, 'updateTime': 1555567991602, 'isWorking': True}]
+
+
+
+[
+
+{'symbol': 'EOSUSDT', 'orderId': 111816715, 'clientOrderId': 'dTRg8JXLdqRCxHxtqMaOHB', 'price': '0.00000000',
+'origQty': '1.88000000', 'executedQty': '1.88000000', 'cummulativeQuoteQty': '10.30240000', 'status': 'FILLED',
+'timeInForce': 'GTC', 'type': 'MARKET', 'side': 'BUY', 'stopPrice': '0.00000000', 'icebergQty': '0.00000000',
+'time': 1554567046408, 'updateTime': 1554567046408, 'isWorking': True},
+
+
+{'symbol': 'EOSUSDT', 'orderId': 111819434, '
+clientOrderId': 'web_2c30f166961a443dac12f5588f0d79ef', 'price': '0.00000000', 'origQty': '1.88000000', 'executedQty':
+'1.88000000', 'cummulativeQuoteQty': '10.32007200', 'status': 'FILLED', 'timeInForce': 'GTC', 'type': 'MARKET', 'side':
+'SELL', 'stopPrice': '0.00000000', 'icebergQty': '0.00000000', 'time': 1554567161088, 'updateTime': 1554567161088,
+'isWorking': True},
+
+
+{'symbol': 'EOSUSDT', 'orderId': 125721691, 'clientOrderId': 'c7HLtmdNcOtDaiqu8rpCnk',
+'price': '0.00000000', 'origQty': '2.00000000', 'executedQty': '2.00000000', 'cummulativeQuoteQty': '10.96600000',
+'status': 'FILLED', 'timeInForce': 'GTC', 'type': 'MARKET', 'side': 'BUY', 'stopPrice': '0.00000000', 'icebergQty': '0.00000000',
+'time': 1555567991157, 'updateTime': 1555567991157, 'isWorking': True},
+
+
+{'symbol': 'EOSUSDT',
+'orderId': 125721695, 'clientOrderId': 'MDyWn5RHzYthl1mVpAA0s6', 'price': '5.51900000',
+'origQty': '2.00000000', 'executedQty': '0.00000000', 'cummulativeQuoteQty': '0.00000000',
+'status': 'NEW', 'timeInForce': 'GTC', 'type': 'LIMIT', 'side': 'SELL', 'stopPrice': '0.00000000',
+'icebergQty': '0.00000000', 'time': 1555567991602, 'updateTime': 1555567991602, 'isWorking': True}]

@@ -2,15 +2,15 @@ from FinancialExpert import FinancialExpert
 from BinanceAPI import BinanceAPI
 import os
 import time
-import concurrent.futures
+from RTObserver import RTObserverRunner
 
 
 class Trader(FinancialExpert):
 	def __init__(self, strategy=None):
-		PUBLIC_KEY = os.environ.get("PUBLIC_KEY", default=None)
-		SECRET_KEY = os.environ.get("SECRET_KEY", default=None)
+		self.public_key = os.environ.get("PUBLIC_KEY", default=None)
+		self.secret_key = os.environ.get("SECRET_KEY", default=None)
 		self.profit_seek = 0.005
-		self.risk_aversion = 1
+		self.risk_aversion = 20
 		self.fee = 0.00075
 		self.profit_seek = ((1+self.profit_seek) / ((1-self.fee)**2) ) - 1
 		self.position_spread = 5
@@ -18,8 +18,8 @@ class Trader(FinancialExpert):
 		self.symbols = ["ADA", "BNB", "BTC", "BTT", "CELR", "EOS", "ETC", "ETH", "FET", "HOT", "ICX",
 						"IOST", "IOTA", "LTC", "NEO", "ONT", "PAX", "QTUM", "TRX", "XLM", "XRP", "VET", "ZIL"]
 
-		self.binanceAPI = BinanceAPI(secret_key=SECRET_KEY,
-								   public_key=PUBLIC_KEY)
+		self.binanceAPI = BinanceAPI(secret_key=self.secret_key,
+								     public_key=self.public_key)
 
 		print("Initializing the Trader")
 		print("Profit_seek:", self.profit_seek*100, "% per trade")
@@ -159,9 +159,7 @@ class Trader(FinancialExpert):
 		# Step 2: Get current price
 		current_price = float(self.binanceAPI.get_latest_price(symbol=combined_symbol)['price'])
 
-		# Step 3: TODO identify trend and riskiness of the investment
-
-		# Step 4: Make decision
+		# Step 3: Make decision
 		decision = False
 		if current_price < (per_max+per_min)/2 \
 				and current_price > per_min \
@@ -200,185 +198,32 @@ class Trader(FinancialExpert):
 			print("Bought ", purchase_quantity, "of ", symbol)
 			print(order_data)
 
-			# Place Take Profit order
-			take_profit_price = round(purchase_price * (1+self.profit_seek), len( str(purchase_price).split(".", 1)[1] ) )
-			# take_profit_price = self.modify_amount_to_lot_size(amount_float=take_profit_price, lot_size=self.lot_size_dict[symbol])
+			# Place Take Profit order - strict
+			take_profit_order_placed = False
+			while not take_profit_order_placed:
+				take_profit_price = round(purchase_price * (1+self.profit_seek), len( str(purchase_price).split(".", 1)[1] ) )
+				take_profit_order = self.binanceAPI.place_limit_order(symbol=symbol,
+																	  side="SELL",
+																	  stop_price=take_profit_price,
+																	  quantity=purchase_quantity)
+				# Check if take profit order was successful
+				try:
+					if take_profit_order['status'] == "NEW":
+						take_profit_order_placed = True
+				except:
+						time.sleep(5)  # TODO random number
 
-			print(take_profit_price)
-			print(purchase_price)
-
-			take_profit_order = self.binanceAPI.place_limit_order(symbol=symbol,
-																  side="SELL",
-																  stop_price=take_profit_price,
-																  quantity=purchase_quantity)
-
-			# TODO If take profit is not successful, handle that somehow.
-			# TODO Start a parallel process that dynamically check for potential market crashes, in other words, tries to avoid losses.
-
-
-			print("Limit order placed:")
-			print(take_profit_order)
-			print("----")
+			# Start a parallel process that monitors the order status and executes stop loss sale if needed
+			rto = RTObserverRunner(symbol=symbol,
+								   purchase_price=purchase_price,
+								   purchase_quantity=purchase_quantity,
+								   order_id=take_profit_order['orderId'],
+								   stop_loss_price=(1-self.risk_aversion * self.profit_seek) * purchase_price,
+								   public_key=self.public_key,
+								   secret_key=self.secret_key)
+			rto.start()
 
 		return order_placed
 
-	# def update_symbols_in_bid(self, symbols_in_bid):
-	# 	for symbol in symbols_in_bid:
-	# 		symbol_balance = float(self.check_free_balances_for_currency_list(account_info=account_info,
-	# 																		 currency_list=['USDT'])['USDT'])
-
-
-
-
-
-
-
-
-
-
-
-
-	def start_safe_trading(self):
-		"""
-		safe trading strategy description
-		:return:
-		"""
-
-		# Analyze all the currencies in parallel. If found one which is cool to be purchased - break the loop and continue
-		currency_found = False
-		chosen_currency = ""
-		while currency_found is False:
-			currency_decisions ={}
-			with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.symbols)) as executor:
-				# Start the load operations and mark each future with its URL
-				future_to_symbol = {executor.submit(self.make_decision_sunray, symbol): symbol for symbol in self.symbols}
-				for future in concurrent.futures.as_completed(future_to_symbol):
-					symbol = future_to_symbol[future]
-					try:
-						data = future.result()
-					except Exception as exc:
-						print('%r generated an exception: %s' % (symbol, exc))
-					else:
-						currency_decisions[symbol] = data
-
-			for currency, decision in currency_decisions.items():
-				if decision is True:
-					chosen_currency = currency
-					currency_found = True
-					break
-				else:
-					continue
-
-		# Get last 2 candle stick data points and place an order to purchase the currency for maximum of an average of
-		# the previous
-		combined_symbol = chosen_currency + "USDT"
-		cs_data = self.binanceAPI.get_candlestick_data(symbol=combined_symbol, interval="1m",
-													  limit=2)
-		cs_data_averages = self.get_cs_data_averages(cs_data=cs_data)
-		purchase_price = cs_data_averages[0]
-		
-		order_data = self.binanceAPI.place_take_profit_order() # TODO +  handle errors
-
-		# Send calls to check if the order went through
-
-		# Once the order for sale is through, place an order to sell at the desired price. Also, place a stop_limit order
-		# that prevents from loss
-
-
-
-	def start_sunray_trading(self):
-		trading = True
-		market_data = self.binanceAPI.get_market_data()
-		lot_size_dict = self.binanceAPI.build_lot_size_dict(market_data=market_data)
-		side = "BUY"
-		while trading:
-			# Step 1: Check available balance in USDT:
-			account_info = self.binanceAPI.get_account_information()
-			print(account_info)
-			free_balance_usdt = float(self.check_free_balances_for_currency_list(account_info=account_info,
-																			currency_list=['USDT'])['USDT']) * 0.99
-			print("Amount of free USDT in your account: ", free_balance_usdt)
-
-			# Step 2: Choose currency and get associated data
-			# TODO implement a way to determine if we are looking tops or bottoms in the market (based on the amount of USDT)
-			print("Selecting currency for trading... ~ 60seconds ")
-			chosen_currency_info = self.choose_currency_for_trading()
-			print("Currency for trading has been chosen: ", chosen_currency_info['chosen_currency'])
-			cs_data = chosen_currency_info["cs_data"]
-			max_dev = chosen_currency_info['max'] - chosen_currency_info['min']
-			chosen_currency_lefthand = chosen_currency_info['chosen_currency'][:-4]
-			free_balance_crypto = self.check_free_balances_for_currency_list(account_info=account_info,
-																		currency_list=[chosen_currency_lefthand])[
-				chosen_currency_lefthand]
-
-			safety_factor = 0.4
-			forward_sensitivity = 2  # Isn't this a bit of a big? TEST
-
-			data_amount = 15 + forward_sensitivity  # 15 is an arbitrary number TODO
-			running = True
-
-			print("Starting the Sunrays algorithm")
-			print("Action: ", side)
-			mins_passed = 0
-			while running:
-
-				# Step 3: check if it makes sense to purchase
-				cs_data_averages = self.get_cs_data_averages(cs_data=cs_data)
-				decision = self.sunrays_based_descison(cs_data_averages=cs_data_averages,
-												  forward_sensitivity=forward_sensitivity,
-												  side=side,
-												  max_dev=max_dev,  # TODO update max_dev every 10 minutes?
-												  safety_factor=safety_factor)
-				if not decision:
-					self.wait(seconds=60)
-					mins_passed += 1
-					cs_data = self.binanceAPI.get_candlestick_data(symbol=chosen_currency_info['chosen_currency'], interval="1m",
-												   limit=str(data_amount))
-					if mins_passed >= 20 and side == "BUY":
-						print(
-							"Seems like this currency is not fluctuating enough at this moment... Let's choose another one. ")
-						print("--->")
-						running = False
-				else:
-					print("Placing an order: ", side)
-					# Place order
-					if side == "SELL":
-						order_amount = float(free_balance_crypto)
-						if order_amount == 0.0:
-							free_balance_crypto = self.check_free_balances_for_currency_list(account_info=account_info,
-																						currency_list=[
-																							chosen_currency_lefthand])[
-								chosen_currency_lefthand]
-							order_amount = float(free_balance_crypto)
-					elif side == "BUY":
-						order_amount = float(free_balance_usdt)
-						order_amount = order_amount / float(
-							self.binanceAPI.get_latest_price(symbol=chosen_currency_info['chosen_currency'])['price'])
-
-					order_amount = self.modify_amount_to_lot_size(amount_float=order_amount, lot_size=lot_size_dict[
-						chosen_currency_info['chosen_currency']])
-
-					order_data = self.binanceAPI.place_order(symbol=chosen_currency_info['chosen_currency'],
-											 side=side,
-											 o_type="MARKET",
-											 quantity=order_amount)
-
-					print(order_data)
-					self.wait(seconds=30)  # Just to make sure order went through
-					# TODO remove naiveness from the absence of error handlings
-
-					account_info = self.binanceAPI.get_account_information()
-					if side == "SELL":
-						side = "BUY"
-						free_balance_usdt = self.check_free_balances_for_currency_list(account_info=account_info,
-																				  currency_list=['USDT'])['USDT']
-						running = False
-					elif side == "BUY":
-						side = "SELL"
-						free_balance_crypto = self.check_free_balances_for_currency_list(account_info=account_info,
-																					currency_list=[
-																						chosen_currency_lefthand])[
-							chosen_currency_lefthand]
-						print("Amount in crypto now in your acc: ", free_balance_crypto)
 
 
